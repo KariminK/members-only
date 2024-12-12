@@ -19,16 +19,18 @@
     "express-session": "^1.18.1",
     "express-validator": "^7.2.0",
     "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.13.1"
   },
   "devDependencies": {
-    "typescript": "^5.7.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/connect-pg-simple": "^7.0.3",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",
     "@types/node": "^22.10.2",
     "@types/passport": "^1.0.17",
-    "@types/pg": "^8.11.10"
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.2"
   }
 }
