@@ -4,7 +4,7 @@ import session from "express-session";
 import path from "path";
 import passport from "passport";
 import local from "passport-local";
-import { PGStore } from "connect-pg-simple";
+import connectPgSimple from "connect-pg-simple";
 import pool from "./db/pool";
 import UserModel from "./models/UserModel";
 import bcrypt from "bcryptjs";
@@ -36,7 +36,7 @@ app.use(
     secret: "mySecret",
     resave: false,
     saveUninitialized: false,
-    store: new PGStore({
+    store: new (connectPgSimple(session))({
       pool: pool,
       createTableIfMissing: true,
     }),
@@ -45,7 +45,7 @@ app.use(
 app.use(passport.session());
 app.use(urlencoded({ extended: false }));
 
-app.get("/", indexRouter);
+app.use("/", indexRouter);
 
 app.listen(3001, () => {
   console.log("Server listening! PORT: 3001");
