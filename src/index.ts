@@ -8,9 +8,9 @@ import connectPgSimple from "connect-pg-simple";
 import pool from "./db/pool";
 import UserModel from "./models/UserModel";
 import bcrypt from "bcryptjs";
+import "./types/index";
 const LocalStrategy = local.Strategy;
 const app = express();
-const userModel = new UserModel();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 passport.use(
   new LocalStrategy(async (email, password, done) => {
     try {
-      const { rows } = await userModel.getUserByEmail(email);
+      const { rows } = await UserModel.getUserByEmail(email);
       const user = rows[0];
 
       if (!user) return done(null, false, { message: "Invalid email" });
@@ -30,6 +30,18 @@ passport.use(
     }
   })
 );
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+passport.deserializeUser(async (id: number, done) => {
+  try {
+    const { rows } = await UserModel.getUser(id);
+    const user = rows[0];
+    return done(null, user);
+  } catch (error) {
+    done(error);
+  }
+});
 
 app.use(
   session({

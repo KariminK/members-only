@@ -11,4 +11,4 @@ class UserModel {
     return await pool.query("SELECT * FROM users WHERE email = $1", [email]);
   }
 }
-export default UserModel;
+export default new UserModel();
