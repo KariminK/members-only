@@ -10,7 +10,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE messages(
-    text: VARCHAR(500) NOT NULL,
+    text VARCHAR(500) NOT NULL,
     author_id INTEGER NOT NULL,
     sent_date TIMESTAMP NOT NULL,
     FOREIGN KEY (author_id) REFERENCES users(id)
