@@ -11,7 +11,6 @@ export function signIn(req: Request, res: Response) {
 }
 
 // sign-in post
-// TODO: fix password validation
 const registerUserValidation: ValidationChain[] = [
   body("email")
     .trim()
@@ -39,8 +38,9 @@ const registerUserValidation: ValidationChain[] = [
     .trim()
     .notEmpty()
     .withMessage("Password can't be empty")
+    .isStrongPassword()
     .withMessage(
-      "Password must be at least 8 chars length and must contain at least one number, lowercase letter, uppercase letter"
+      "Password must be at least 8 chars length and must contain at least one number, lowercase letter, uppercase letter, and symbol"
     ),
 ];
 
