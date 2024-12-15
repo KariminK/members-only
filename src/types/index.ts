@@ -1,3 +1,4 @@
+export type userStatus = "member" | "admin" | "guest";
 declare global {
   namespace Express {
     interface User {
@@ -6,7 +7,7 @@ declare global {
       last_name: string;
       email: string;
       password: string;
-      status: string;
+      status: userStatus;
     }
   }
 }

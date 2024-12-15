@@ -1,4 +1,4 @@
-CREATE TYPE user_status AS ENUM ('member', 'admin');
+CREATE TYPE user_status AS ENUM ('member', 'admin', 'guest');
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
@@ -6,7 +6,7 @@ CREATE TABLE users(
     last_name VARCHAR(40),
     email VARCHAR(50),
     password VARCHAR(255),
-    status user_status
+    status user_status DEFAULT 'guest'
 );
 
 CREATE TABLE messages(
