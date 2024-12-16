@@ -11,29 +11,28 @@ export function signIn(req: Request, res: Response) {
 }
 
 // sign-in post
-const registerUserValidation: ValidationChain[] = [
+const validateEmail = () =>
   body("email")
     .trim()
     .notEmpty()
     .withMessage("Email shouldn't be empty")
     .isEmail()
-    .withMessage("Invalid Email"),
-  body("first_name")
+    .withMessage("Invalid Email");
+
+const validateName = (field: string, name: string) =>
+  body(field)
     .trim()
     .notEmpty()
-    .withMessage("First name shouldn't be empty")
+    .withMessage(`${name} shouldn't be empty`)
     .isString()
-    .withMessage("First name should be string")
+    .withMessage(`${name} should be string`)
     .isLength({ min: 3, max: 20 })
-    .withMessage("First name should be between 3 and 20 characters"),
-  body("last_name")
-    .trim()
-    .notEmpty()
-    .withMessage("Last name shouldn't be empty")
-    .isString()
-    .withMessage("Last name should be string")
-    .isLength({ min: 3, max: 20 })
-    .withMessage("Last name should be between 3 and 20 characters"),
+    .withMessage(`${name} should be between 3 and 20 characters`);
+
+const registerUserValidation: ValidationChain[] = [
+  validateEmail(),
+  validateName("first_name", "First name"),
+  validateName("last_name", "Last name"),
   body("password")
     .trim()
     .notEmpty()
@@ -64,3 +63,8 @@ function registerUserHandler(req: Request, res: Response, next: NextFunction) {
 }
 
 export const registerUser = [...registerUserValidation, registerUserHandler];
+
+// log in
+export function logIn(req: Request, res: Response) {
+  res.render("log-in");
+}
