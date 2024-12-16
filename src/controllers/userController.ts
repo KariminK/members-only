@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { NextFunction, Request, Response } from "express";
 import { body, ValidationChain, validationResult } from "express-validator";
 import UserModel from "../models/UserModel";
+import passport from "passport";
 
 // sign-in get
 export function signIn(req: Request, res: Response) {
@@ -67,4 +68,15 @@ export const registerUser = [...registerUserValidation, registerUserHandler];
 // log in
 export function logIn(req: Request, res: Response) {
   res.render("log-in");
+}
+
+export function logOut(req: Request, res: Response) {
+  res.render("log-out");
+}
+
+export function logOutUser(req: Request, res: Response, next: NextFunction) {
+  req.logOut((err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
 }

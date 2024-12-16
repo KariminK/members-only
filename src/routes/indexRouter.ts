@@ -1,5 +1,11 @@
 import { Router } from "express";
-import { logIn, registerUser, signIn } from "../controllers/userController";
+import {
+  logIn,
+  logOut,
+  logOutUser,
+  registerUser,
+  signIn,
+} from "../controllers/userController";
 import { getIndexPage } from "../controllers/indexController";
 import passport from "passport";
 
@@ -19,5 +25,8 @@ indexRouter.post(
     failureRedirect: "/dw",
   })
 );
+
+indexRouter.get("/log-out", logOut);
+indexRouter.post("/log-out", logOutUser);
 
 export default indexRouter;
