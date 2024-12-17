@@ -10,6 +10,14 @@ import passport from "passport";
 export function signIn(req: Request, res: Response) {
   res.render("sign-in");
 }
+export function addUserToLocals(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  res.locals.user = req.user;
+  next();
+}
 
 // sign-in post
 const validateEmail = () =>
@@ -79,4 +87,33 @@ export function logOutUser(req: Request, res: Response, next: NextFunction) {
     if (err) return next(err);
     res.redirect("/");
   });
+}
+
+export function joinClub(req: Request, res: Response) {
+  res.render("join-club");
+}
+
+const joinPasswordValidation = body("password")
+  .isEmpty()
+  .withMessage("Password shouldn't be empty")
+  .custom((input) => {
+    return input === "50Cent";
+  })
+  .withMessage("Invalid password");
+
+export async function joinUserToClub(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const errors = validationResult(req);
+    if (errors.isEmpty())
+      return res.render("join-club", { errors: errors.array() });
+    if (req.user?.status === "member") return res.redirect("/");
+    if (req.user?.id) await UserModel.updateUserStatus(req.user?.id, "member");
+    res.redirect("/");
+  } catch (error) {
+    return next(error);
+  }
 }

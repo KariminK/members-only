@@ -23,12 +23,6 @@
       <input type="submit" value="Sign in" />
       <a href="/">Cancel</a>
     </form>
-    <% if (locals.errors) { %>
-    <ul>
-      <% errors.forEach(error => { %>
-      <li><%- error.msg %></li>
-      <% }) %>
-    </ul>
-    <% } %>
+    <% include("partials/errors") %>
   </body>
 </html>

@@ -1,5 +1,7 @@
 import { Router } from "express";
 import {
+  addUserToLocals,
+  joinClub,
   logIn,
   logOut,
   logOutUser,
@@ -11,7 +13,8 @@ import passport from "passport";
 
 const indexRouter = Router();
 
-// todo: Basic routes
+indexRouter.use(addUserToLocals);
+
 indexRouter.get("/", getIndexPage);
 
 indexRouter.get("/sign-in", signIn);
@@ -28,5 +31,7 @@ indexRouter.post(
 
 indexRouter.get("/log-out", logOut);
 indexRouter.post("/log-out", logOutUser);
+
+indexRouter.get("/join-club", joinClub);
 
 export default indexRouter;
