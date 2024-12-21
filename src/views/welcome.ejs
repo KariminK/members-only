@@ -1,4 +1,4 @@
-<!-- TODO: index view -->
+<!-- TODO: change view name -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,12 +9,16 @@
   <body>
     <h1>Welcome In Da Club</h1>
     <% if (user.status === "guest") { %>
-    <p>
-      You are only guest now, but you can change It! Usually, we charge about
-      50Cent for one person, but we have made exception for you!
-    </p>
-    <a href="/join-club">Join Club Now!</a>
-    <% } %> <% include("partials/errors") %>
+      <p>
+        You are only guest now, but you can change It! Usually, we charge about
+        50Cent for one person, but we have made exception for you!
+      </p>
+      <a href="/join-club">Join Club Now!</a>
+    <% }else{ %>
+      <a href="/new-message">Send Message</a>
+      <% include("partials/messages") %>
+      <% } %>
+    <%- include("partials/errors") %>
     <a href="/log-out">Log out</a>
   </body>
 </html>

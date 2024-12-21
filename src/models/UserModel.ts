@@ -19,10 +19,12 @@ class UserModel {
     return;
   }
   async updateUserStatus(id: number, status: userStatus) {
-    await pool.query("UPDATE users SET status = $1 WHERE id = $2", [
-      id,
-      status,
-    ]);
+    const query = await pool.query(
+      "UPDATE users SET status = $1 WHERE id = $2",
+      [status, id]
+    );
+    if (query.rowCount === null || query.rowCount < 1)
+      throw new Error("Failed to update user");
   }
 }
 export default new UserModel();

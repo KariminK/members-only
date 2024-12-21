@@ -108,9 +108,7 @@ export async function joinUserToClub(
 ) {
   try {
     const error = validationResult(req);
-    console.log(error.array());
-
-    if (error.isEmpty())
+    if (!error.isEmpty())
       return res.render("join-club", { errors: error.array() });
     if (req.user?.status === "member") return res.redirect("/");
     if (req.user?.id) await UserModel.updateUserStatus(req.user?.id, "member");
