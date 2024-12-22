@@ -7,9 +7,10 @@
   </head>
   <body>
     <h1>Say something to other people:</h1>
-    <form action="/message" method="post">
+    <form action="/new-message" method="post">
       <textarea name="text" id="msgTextarea"></textarea>
       <input type="submit" value="Send message" />
     </form>
+    <%- include("partials/errors") %>
   </body>
 </html>

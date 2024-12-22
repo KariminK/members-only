@@ -11,3 +11,10 @@ declare global {
     }
   }
 }
+
+export interface Message {
+  id?: number;
+  text: string;
+  author_id: number;
+  sent_date: Date;
+}

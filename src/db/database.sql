@@ -10,6 +10,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE messages(
+    id SERIAL PRIMARY KEY,
     text VARCHAR(500) NOT NULL,
     author_id INTEGER NOT NULL,
     sent_date TIMESTAMP NOT NULL,

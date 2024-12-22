@@ -1,8 +1,19 @@
 import { NextFunction, Request, Response } from "express";
+import MessageModel from "../models/MessageModel";
 
-export function getIndexPage(req: Request, res: Response) {
-  if (req.user) res.render("welcome", { user: req.user });
-  else res.render("index");
+export async function getIndexPage(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (!req.user) return res.render("index");
+    const result = await MessageModel.get();
+    const messages = result.rows;
+    res.render("welcome", { user: req.user, messages: messages });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export function getErrorPage(
@@ -11,5 +22,5 @@ export function getErrorPage(
   res: Response,
   next: NextFunction
 ) {
-  res.render("error", { error });
+  res.render("errorPage", { error });
 }

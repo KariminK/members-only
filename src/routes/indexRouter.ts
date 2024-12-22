@@ -11,7 +11,10 @@ import {
 } from "../controllers/userController";
 import { getErrorPage, getIndexPage } from "../controllers/indexController";
 import passport from "passport";
-import { getNewMessageForm } from "../controllers/messageController";
+import {
+  getNewMessageForm,
+  sendNewMessage,
+} from "../controllers/messageController";
 
 const indexRouter = Router();
 
@@ -39,5 +42,6 @@ indexRouter.get("/join-club", joinClub);
 indexRouter.post("/join-club", joinUserToClub);
 
 indexRouter.get("/new-message", getNewMessageForm);
+indexRouter.post("/new-message", sendNewMessage);
 
 export default indexRouter;

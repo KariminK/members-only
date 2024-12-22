@@ -16,7 +16,7 @@
       <a href="/join-club">Join Club Now!</a>
     <% }else{ %>
       <a href="/new-message">Send Message</a>
-      <% include("partials/messages") %>
+      <%- include("partials/messages") %>
       <% } %>
     <%- include("partials/errors") %>
     <a href="/log-out">Log out</a>
