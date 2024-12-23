@@ -2,15 +2,14 @@
 <ul>
   <% messages.forEach(message => { %>
   <li>
-    <p><b><%- message.author %></b></p>
-    <p><%- message.sent_date %></p>
-    <% if (user.status !== "guest") { %>
-    <p><%- message.text %></p>
+    <% if (user && user.status !== "guest") { %>
+     <p><b><%- message.author %></b></p>
     <% } %>
+    <p><%- message.sent_date %></p>
+    <p><%- message.text %></p>
     <br />
-    <% if (user.status === "admin" || user.id === message.author_id) { %>
+    <% if (user && user.status === "admin") { %>
     <a href="/message/<%- message.id %>/delete">Delete message</a>
-    <a href="/message/<%- message.id %>/edit">Edit message</a>
     <% } %>
   </li>
   <% }) %>

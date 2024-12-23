@@ -7,7 +7,6 @@ export async function getIndexPage(
   next: NextFunction
 ) {
   try {
-    if (!req.user) return res.render("index");
     const result = await MessageModel.get();
     const messages = result.rows;
     res.render("index", { user: req.user, messages: messages });
