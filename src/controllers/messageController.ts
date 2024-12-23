@@ -30,4 +30,20 @@ async function sendNewMessageHandler(
   }
 }
 
+export async function deleteMessage(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { id } = req.params;
+    console.log(id);
+
+    await MessageModel.deleteMessage(id);
+    res.redirect("/");
+  } catch (error) {
+    next(error);
+  }
+}
+
 export const sendNewMessage = [newMessageValidation, sendNewMessageHandler];

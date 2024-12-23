@@ -9,8 +9,8 @@
     <% } %>
     <br />
     <% if (user.status === "admin" || user.id === message.author_id) { %>
-    <a href="/<%= message.id %>/delete">Delete message</a>
-    <a href="/<%= message.id %>/edit">Edit message</a>
+    <a href="/message/<%- message.id %>/delete">Delete message</a>
+    <a href="/message/<%- message.id %>/edit">Edit message</a>
     <% } %>
   </li>
   <% }) %>

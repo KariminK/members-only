@@ -12,6 +12,7 @@ import {
 import { getErrorPage, getIndexPage } from "../controllers/indexController";
 import passport from "passport";
 import {
+  deleteMessage,
   getNewMessageForm,
   sendNewMessage,
 } from "../controllers/messageController";
@@ -43,5 +44,7 @@ indexRouter.post("/join-club", joinUserToClub);
 
 indexRouter.get("/new-message", getNewMessageForm);
 indexRouter.post("/new-message", sendNewMessage);
+
+indexRouter.get("/message/:id/delete", deleteMessage);
 
 export default indexRouter;
