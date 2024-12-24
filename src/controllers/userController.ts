@@ -49,7 +49,11 @@ const registerUserValidation: ValidationChain[] = [
     .isStrongPassword()
     .withMessage(
       "Password must be at least 8 chars length and must contain at least one number, lowercase letter, uppercase letter, and symbol"
-    ),
+    )
+    .custom((input, { req }) => {
+      return input === req.body.confirmPassword;
+    })
+    .withMessage("Passwords must be the same"),
 ];
 
 function registerUserHandler(req: Request, res: Response, next: NextFunction) {

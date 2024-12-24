@@ -38,8 +38,7 @@ export async function deleteMessage(
   try {
     const { id } = req.params;
     console.log(id);
-
-    await MessageModel.deleteMessage(id);
+    if (req.user?.status === "admin") await MessageModel.deleteMessage(id);
     res.redirect("/");
   } catch (error) {
     next(error);
