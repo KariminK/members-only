@@ -1,11 +1,17 @@
 <% if(locals.messages){ %>
-<ul>
+<ul class="message-list">
   <% messages.forEach(message => { %>
-  <li>
-    <% if (user && user.status !== "guest") { %>
-     <p><b><%- message.author %></b></p>
-    <% } %>
-    <p><%- message.sent_date %></p>
+  <li class="message">
+    <div class="message-info">
+      <p><%- message.sent_date.toDateString() %></p>
+      <p>
+        <% if (user && user.status !== "guest") { %>
+          <b><%- message.author %></b>
+        <% }else{ %>
+          <b>Log in to see author</b>
+        <%} %>
+      </p>
+    </div>
     <p><%- message.text %></p>
     <br />
     <% if (user && user.status === "admin") { %>
