@@ -3,14 +3,16 @@
   <% messages.forEach(message => { %>
   <li class="message">
     <div class="message-info">
-      <p><%- message.sent_date.toDateString() %></p>
       <p>
+        Message from:
         <% if (user && user.status !== "guest") { %>
           <b><%- message.author %></b>
         <% }else{ %>
-          <b>Log in to see author</b>
+          ...
         <%} %>
       </p>
+      <p><%- message.sent_date.toDateString() %></p>
+      
     </div>
     <p><%- message.text %></p>
     <br />

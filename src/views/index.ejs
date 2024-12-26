@@ -16,12 +16,19 @@
           You are only guest now, but you can change It! Usually, we charge about
           50Cent for one person, but we have made exception for you!
         </p>
-        <a href="/join-club">Join Club Now!</a>
       <% } %>
-      <% if(user){ %>
-        <a href="/new-message">Send Message</a>
-        <a href="/log-out">Log out</a>
-      <% } %> 
+      <div class="header-buttons">
+        <% if(user){ %>
+          <a class="primary-btn " href="/new-message">Send Message</a>
+          <% if (user.status === "guest") { %>
+            <span>or</span>
+            <a class="primary-btn" href="/join-club">Join Club Now!</a>
+          <% } %>
+          <span>or</span>
+          <a class="secondary-btn" href="/log-out">Log out</a>
+          
+        <% } %> 
+      </div>
     </header>
     
     
