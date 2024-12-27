@@ -4,27 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Members | Sign-in</title>
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/buttons.css" />
   </head>
   <body>
     <h1>Sign in</h1>
     <form action="/sign-in" method="post">
-      <label for="fnameInput">First Name: </label>
-      <input type="text" name="first_name" id="fnameInput" />
-      <br />
-      <label for="lnameInput">Last Name:</label>
-      <input type="text" name="last_name" id="lnameInput" />
-      <br />
-      <label for="emailInput">Email:</label>
-      <input type="email" name="email" id="emailInput" />
-      <br />
-      <label for="passwordInput">Password:</label>
-      <input type="password" name="password" id="passwordInput" />
-      <br />
-      <label for="confirmPasswordInput">Confirm password:</label>
-      <input type="password" name="confirmPassword" id="confirmPasswordInput" />
-      <br />
-      <input type="submit" value="Sign in" />
-      <a href="/">Cancel</a>
+      <label for="fnameInput">
+        <p class="label-text">First Name:</p>
+        <input class="field" type="text" name="first_name" id="fnameInput" />
+      </label>
+      <label for="lnameInput">
+        <p class="label-text">Last Name:</p>
+        <input class="field" type="text" name="last_name" id="lnameInput" />
+      </label>
+      <label for="emailInput">
+        <p class="label-text">Email:</p>
+        <input class="field" type="email" name="email" id="emailInput" />
+      </label>
+      <label for="passwordInput">
+        <p class="label-text">Password:</p>
+        <input
+          class="field"
+          type="password"
+          name="password"
+          id="passwordInput" />
+      </label>
+      <label for="confirmPasswordInput">
+        <p class="label-text">Confirm password:</p>
+        <input
+          class="field"
+          type="password"
+          name="confirmPassword"
+          id="confirmPasswordInput" />
+      </label>
+      <div class="form-buttons">
+        <input class="primary-btn" type="submit" value="Sign in" />
+        <a class="secondary-btn" href="/">Cancel</a>
+      </div>
     </form>
     <%- include("partials/errors") %>
   </body>
