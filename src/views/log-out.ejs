@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/buttons.css" />
   </head>
   <body>
     <h1>Are you really sure to logout from Da Club?</h1>
     <form action="/log-out" method="post">
-      <input type="submit" value="Yes" />
-      <a href="/">NO, go back</a>
+      <div class="form-buttons">
+        <input class="primary-btn" type="submit" value="Yes" />
+        <a class="secondary-btn" href="/">NO, go back</a>
+      </div>
     </form>
     <%- include("./partials/errors"); %>
   </body>
