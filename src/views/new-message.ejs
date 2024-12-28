@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Write new message to Da Club</title>
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/buttons.css" />
   </head>
   <body>
     <h1>Say something to other people:</h1>
     <form action="/new-message" method="post">
-      <textarea name="text" id="msgTextarea"></textarea>
-      <input type="submit" value="Send message" />
+      <label for="msgTextarea">
+        <p class="label-text">Message text:</p>
+        <textarea name="text" id="msgTextarea" class="field"></textarea>
+      </label>
+      <input class="primary-btn" type="submit" value="Send message" />
     </form>
     <%- include("partials/errors") %>
   </body>
