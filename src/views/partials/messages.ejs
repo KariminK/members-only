@@ -17,7 +17,7 @@
     <p><%- message.text %></p>
     <br />
     <% if (user && user.status === "admin") { %>
-    <a href="/message/<%- message.id %>/delete">Delete message</a>
+      <a class="warning-btn" href="/message/<%- message.id %>/delete">Delete message</a>
     <% } %>
   </li>
   <% }) %>

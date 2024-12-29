@@ -13,7 +13,8 @@
   cursor: pointer;
 }
 
-.secondary-btn {
+.secondary-btn,
+.warning-btn {
   color: black;
   text-decoration: none;
   font-weight: bold;
@@ -26,7 +27,14 @@
 }
 
 .primary-btn:hover,
-.secondary-btn:hover {
+.secondary-btn:hover,
+.warning-btn:hover {
   box-shadow: none;
   transform: translate(5px, 5px);
+}
+
+.warning-btn {
+  background-color: hsl(0, 91%, 66%);
+  color: white;
+  margin: 0.5rem;
 }

@@ -12,11 +12,16 @@ class UserModel {
     return await pool.query("SELECT * FROM users WHERE email = $1", [email]);
   }
   async createUser(user: Express.User) {
-    await pool.query(
+    return await pool.query(
       "INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4)",
       [user.first_name, user.last_name, user.email, user.password]
     );
-    return;
+  }
+  async createAdmin(user: Express.User) {
+    return await pool.query(
+      "INSERT INTO users (first_name, last_name, email, password, status) VALUES ($1, $2, $3, $4, 'admin')",
+      [user.first_name, user.last_name, user.email, user.password]
+    );
   }
   async updateUserStatus(id: number, status: userStatus) {
     const query = await pool.query(

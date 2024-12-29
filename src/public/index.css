@@ -49,6 +49,9 @@ header p {
   border: 1px solid black;
   box-shadow: 10px 10px 0px black;
   margin: 2rem 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .message-info {
@@ -62,4 +65,8 @@ header p {
 .message > p {
   margin: 1em;
   margin-bottom: 0px;
+}
+
+.message .warning-btn {
+  align-self: flex-end;
 }

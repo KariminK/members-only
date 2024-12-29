@@ -63,10 +63,11 @@ function registerUserHandler(req: Request, res: Response, next: NextFunction) {
     if (!errors.isEmpty())
       return res.render("sign-in", { errors: errors.array() });
 
-    const user: Express.User = req.body;
+    const user = req.body;
     bcrypt.hash(user.password, 10, async (err, hash) => {
       if (err) return next(err);
-      await UserModel.createUser({ ...user, password: hash });
+      if (!user.admin) await UserModel.createUser({ ...user, password: hash });
+      else await UserModel.createAdmin({ ...user, password: hash });
       console.log("[log] new user created");
       res.redirect("/");
     });
