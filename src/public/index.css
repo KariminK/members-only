@@ -52,6 +52,7 @@ header p {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 1em;
 }
 
 .message-info {

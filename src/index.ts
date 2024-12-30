@@ -9,6 +9,9 @@ import pool from "./db/pool";
 import UserModel from "./models/UserModel";
 import bcrypt from "bcryptjs";
 import "./types/index";
+import { config } from "dotenv";
+
+config();
 const LocalStrategy = passportStrategy.Strategy;
 const app = express();
 
@@ -69,6 +72,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.listen(3001, () => {
-  console.log("Server listening! PORT: 3001");
+app.listen(process.env.PORT, () => {
+  console.log("Server listening! PORT: " + process.env.PORT);
 });

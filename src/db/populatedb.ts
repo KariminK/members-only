@@ -7,6 +7,7 @@ config();
 
 const client = new Client({
   connectionString: process.env.DB_CONNECTION_STRING,
+  ssl: true,
 });
 console.log(process.env.DB_CONNECTION_STRING);
 
